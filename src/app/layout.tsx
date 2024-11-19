@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
-import { SessionProvider } from "@/components/SessionProvider";
-import UserButton from "@/components/UserButton";
+import { SessionProvider } from "@/app/components/SessionProvider";
+import UserButton from "@/app/components/UserButton";
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
