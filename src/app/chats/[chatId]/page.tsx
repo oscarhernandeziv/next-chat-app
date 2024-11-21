@@ -1,23 +1,23 @@
-import Chat from "@/app/components/Chat";
-import { getChat } from "@/db";
 import { redirect, notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
+import Chat from "@/app/components/Chat";
 
-export const dynamic = "force-dynamic";
+import { getChat } from "@/db";
 
 export default async function ChatDetail({
-  params: { chatId },
+  params,
 }: {
-  params: { chatId: string };
+  params: Promise<{ chatId: string }>;
 }) {
+  const { chatId } = await params;
   const chat = await getChat(+chatId);
   if (!chat) {
-    notFound();
+    return notFound();
   }
 
   const session = await getServerSession();
   if (!session || chat?.user_email !== session?.user?.email) {
-    redirect("/");
+    return redirect("/");
   }
 
   return (
