@@ -1,6 +1,8 @@
 import Chat from "@/app/components/Chat";
 import { Separator } from "@/app/components/ui/separator";
 import { getServerSession } from "next-auth";
+import PreviousChats from "@/app/components/PreviousChats";
+import { Suspense } from "react";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -13,6 +15,9 @@ export default async function Home() {
       )}
       {session?.user?.email && (
         <>
+          <Suspense fallback={<div>Loading previous chats...</div>}>
+            <PreviousChats />
+          </Suspense>
           <Separator className="my-5" />
           <Chat />
         </>
