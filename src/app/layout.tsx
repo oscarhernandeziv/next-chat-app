@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
-import { SessionProvider } from "@/app/components/SessionProvider";
-import UserButton from "@/app/components/UserButton";
+import { SessionProvider } from "@/components/SessionProvider";
+import UserButton from "@/components/UserButton";
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -18,8 +18,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  chats,
 }: Readonly<{
   children: React.ReactNode;
+  chats: React.ReactNode;
 }>) {
   return (
     <SessionProvider>
@@ -37,6 +39,7 @@ export default function RootLayout({
             </div>
           </header>
           <div className="flex flex-col md:flex-row">
+            {chats}
             <div className="flex-grow">{children}</div>
           </div>
         </body>

@@ -1,7 +1,7 @@
-import Chat from "@/app/components/Chat";
-import { Separator } from "@/app/components/ui/separator";
+import Chat from "@/components/Chat";
+import { Separator } from "@/components/ui/separator";
 import { getServerSession } from "next-auth";
-import PreviousChats from "@/app/components/PreviousChats";
+import PreviousChats from "@/components/PreviousChats";
 import { Suspense } from "react";
 
 export default async function Home() {
@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className="p-5">
-      <h1 className="text-4xl font-bold">Welcome to Next Chat App</h1>
+      <h1 className="text-4xl font-bold">Welcome to Next Chat App</h1>x
       {!session?.user?.email && (
         <div>You must be logged in to use this app.</div>
       )}
